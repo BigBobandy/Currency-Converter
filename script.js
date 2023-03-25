@@ -46,7 +46,7 @@ async function getInput() {
 
 async function fetchExchangeRate(baseCurrency, targetCurrency) {
   //Defining the API URL
-  const apiUrl = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json`;
+  const apiUrl = `https://v6.exchangerate-api.com/v6/bfcf6227812d45a8453534e4/latest/${baseCurrency}`;
 
   //Wrapping the code in a try-catch statement to catch any errors and logging them if they occur
   try {
@@ -61,16 +61,15 @@ async function fetchExchangeRate(baseCurrency, targetCurrency) {
     //Parse the json response data
     const data = await response.json();
 
-    //getting the base currency rate and the target currency rate from the data
-    const baseRate = data[baseCurrency];
-    const targetRate = data[targetCurrency];
+    // Checking if the API returned an error
+    if (data.result === "error") {
+      throw new Error(`Error fetching exchange rates: ${data["error-type"]}`);
+    }
 
-    //Calculating the exchange rate by dividing the target rate by the base rate
-    const exchangeRate = targetRate / baseRate;
+    // Getting the exchange rate directly from the data
+    const exchangeRate = data.conversion_rates[targetCurrency];
 
     //Returning the exchange rate
-    console.log("Base Rate:", baseRate);
-    console.log("Target Rate:", targetRate);
     console.log("Exchange Rate:", exchangeRate);
     return exchangeRate;
   } catch (error) {
