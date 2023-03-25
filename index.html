@@ -4,9 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Currency Converter</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
   </head>
-  <body></body>
+  <body>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" placeholder="Enter Amount" />
+
+    <label for="base-currency">From:</label>
+    <select name="base-currency" id="base-currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <!-- Add additional options for other currencies-->
+    </select>
+
+    <label for="target-currency">To:</label>
+    <select name="target-currency" id="target-currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <!-- Add additional options for other currencies-->
+    </select>
+
+    <button id="convert-btn">Convert</button>
+    <p id="result">Converted Amount:</p>
+  </body>
 </html>
