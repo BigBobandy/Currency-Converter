@@ -1,15 +1,20 @@
-//Grabbing HTML elements from the dom
+//Grabbing HTML elements from the DOM
 const amountInput = document.getElementById("amount");
 const baseCurrencySelect = document.getElementById("base-currency");
 const targetCurrencySelect = document.getElementById("target-currency");
 const convertBtn = document.getElementById("convert-btn");
 const resultElement = document.getElementById("result");
+const errorElement = document.getElementById("error");
 
 //Event listener for the convert button that calls the getInput function when clicked
 convertBtn.addEventListener("click", getInput);
 
 //Function to get input from user, validate it, and return an error if it's invalid. It's an async function because it calls the fetchExchangeRate function inside of it
 async function getInput() {
+  //Clearing error messages and results when the button is clicked
+  errorElement.innerText = "";
+  resultElement.innerText = "";
+
   //Getting the value of the input field and using the trim method to remove any whitespace that may cause an error
   const amountInputValue = amountInput.value.trim();
 
@@ -17,16 +22,16 @@ async function getInput() {
   const baseCurrency = baseCurrencySelect.value;
   const targetCurrency = targetCurrencySelect.value;
 
-  //Checking if the selected currencies are the same. Returns early if so
+  //Checking if the selected currencies are the same. Returns early if so and displays the error message in the error element
   if (baseCurrency === targetCurrency) {
-    resultElement.innerText =
+    errorElement.innerText =
       "Base currency and target currency cannot be the same";
     return;
   }
 
-  //Input validation to ensure that the input field isn't blank or not a number
+  //Input validation to ensure that the input field isn't blank or not a number if so displays error message in the error element
   if (amountInputValue === "" || isNaN(amountInputValue)) {
-    resultElement.innerText = "Invalid input value";
+    errorElement.innerText = "Invalid input value";
   } else {
     //Taking the input value, parsing it as a number and assigning it to the amount variable
     const amount = parseFloat(amountInputValue);
