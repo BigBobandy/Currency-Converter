@@ -1,11 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --primary-color: #201e20;
+  --secondary-color: #fac88f;
+  --secondary-darker: #e0a96d;
+}
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  background-color: var(--primary-color);
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,4 +20,67 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0;
+}
+
+main {
+  background-color: var(--secondary-darker);
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 4rem 4rem;
+  text-align: center;
+}
+
+#amount-div {
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+#currency-select-div {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+label,
+input,
+select,
+button {
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  border: 1.5px solid black;
+  border-radius: 5px;
+  width: 150px;
+}
+
+#convert-btn {
+  background-color: var(--secondary-color);
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 10%;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#convert-btn:hover {
+  background-color: var(--secondary-darker);
+  outline: 0;
+}
+#convert-btn:active {
+  transform: scale(0.98);
+}
+
+#result {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 20px;
 }

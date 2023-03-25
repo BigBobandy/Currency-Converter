@@ -10,37 +10,38 @@
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
   </head>
   <body>
-    <div id="amount">
-      <label for="amount">Amount:</label>
-      <input
-        type="number"
-        id="amount"
-        name="amount"
-        placeholder="Enter Amount"
-      />
-      <button id="convert-btn">Convert</button>
-    </div>
+    <main id="main">
+      <h1>Currency Converter</h1>
+      <div id="amount-div">
+        <label for="amount">Amount:</label>
+        <input
+          type="number"
+          id="amount"
+          name="amount"
+          placeholder="Enter Amount"
+        />
+        <button id="convert-btn">Convert</button>
+      </div>
 
-    <div id="base-div">
-      <label for="base-currency">From:</label>
-      <select name="base-currency" id="base-currency">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <!-- Add additional options for other currencies-->
-      </select>
-    </div>
+      <div id="currency-select-div">
+        <label for="base-currency">From:</label>
+        <select name="base-currency" id="base-currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <!-- Add additional options for other currencies-->
+        </select>
 
-    <div id="target-div">
-      <label for="target-currency">To:</label>
-      <select name="target-currency" id="target-currency">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <!-- Add additional options for other currencies-->
-      </select>
-    </div>
+        <label for="target-currency">To:</label>
+        <select name="target-currency" id="target-currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <!-- Add additional options for other currencies-->
+        </select>
+      </div>
 
-    <div id="result-div">
-      <p id="result">Converted Amount:</p>
-    </div>
+      <div id="result-div">
+        <p id="result">Converted Amount:</p>
+      </div>
+    </main>
   </body>
 </html>
