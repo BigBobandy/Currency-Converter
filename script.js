@@ -1,13 +1,16 @@
+//Grabbing HTML elements from the dom
 const amountInput = document.getElementById("amount");
 const baseCurrencySelect = document.getElementById("base-currency");
 const targetCurrencySelect = document.getElementById("target-currency");
 const convertBtn = document.getElementById("convert-btn");
 const resultElement = document.getElementById("result");
 
+//Event listener for the convert button that calls the getInput function when clicked
 convertBtn.addEventListener("click", getInput);
 
-function getInput() {
-  //Getting the value of the input field
+//Function to get input from user, validate it, and return an error if it's invalid. It's an async function because it calls the fetchExchangeRate function inside of it
+async function getInput() {
+  //Getting the value of the input field and using the trim method to remove any whitespace that may cause an error
   const amountInputValue = amountInput.value.trim();
 
   //Getting the selected base and target currencies
@@ -29,6 +32,15 @@ function getInput() {
     console.log("Amount:", amount);
     console.log("Base currency:", baseCurrency);
     console.log("Target currency:", targetCurrency);
+
+    //Fetching the exchange rate and calculating the converted amount
+    const exchangeRate = await fetchExchangeRate(baseCurrency, targetCurrency);
+    const convertedAmount = amount * exchangeRate;
+
+    //Rounding the converted amount to two decimal places and displaying the result in the result element
+    resultElement.innerText = `${amount} ${baseCurrency} = ${convertedAmount.toFixed(
+      2
+    )} ${targetCurrency}`;
   }
 }
 
@@ -57,6 +69,9 @@ async function fetchExchangeRate(baseCurrency, targetCurrency) {
     const exchangeRate = targetRate / baseRate;
 
     //Returning the exchange rate
+    console.log("Base Rate:", baseRate);
+    console.log("Target Rate:", targetRate);
+    console.log("Exchange Rate:", exchangeRate);
     return exchangeRate;
   } catch (error) {
     //Logging any errors that occurred during the fetch process
