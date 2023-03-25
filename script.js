@@ -19,19 +19,17 @@ async function getInput() {
 
   //Checking if the selected currencies are the same. Returns early if so
   if (baseCurrency === targetCurrency) {
-    console.log("Base currency and target currency cannot be the same");
+    resultElement.innerText =
+      "Base currency and target currency cannot be the same";
     return;
   }
 
   //Input validation to ensure that the input field isn't blank or not a number
   if (amountInputValue === "" || isNaN(amountInputValue)) {
-    console.log("Invalid input value");
+    resultElement.innerText = "Invalid input value";
   } else {
     //Taking the input value, parsing it as a number and assigning it to the amount variable
     const amount = parseFloat(amountInputValue);
-    console.log("Amount:", amount);
-    console.log("Base currency:", baseCurrency);
-    console.log("Target currency:", targetCurrency);
 
     //Fetching the exchange rate and calculating the converted amount
     const exchangeRate = await fetchExchangeRate(baseCurrency, targetCurrency);
@@ -70,7 +68,6 @@ async function fetchExchangeRate(baseCurrency, targetCurrency) {
     const exchangeRate = data.conversion_rates[targetCurrency];
 
     //Returning the exchange rate
-    console.log("Exchange Rate:", exchangeRate);
     return exchangeRate;
   } catch (error) {
     //Logging any errors that occurred during the fetch process
