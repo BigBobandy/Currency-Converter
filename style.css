@@ -68,7 +68,7 @@ select {
   border-radius: 10%;
   padding: 10px 15px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
 #convert-btn:hover {
